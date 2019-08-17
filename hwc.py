@@ -35,4 +35,4 @@ while True:
     if turns_now != turns:
         turns_now = turns
         write_to_csv(time_now, turns_now)
-        time.sleep(10)
+    time.sleep(10)
