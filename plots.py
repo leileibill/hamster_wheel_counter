@@ -30,10 +30,7 @@ diff_df = diff_df.diff()
 plot_df_1 = master_df
 plot_df_2 = diff_df.groupby(diff_df.index.hour).sum()
 # plot_df_2 = plot_df_2.set_index(pd.to_datetime(plot_df_2.index, format='%H'))
-
-print(plot_df_2)
-
-# plot_df = master_df['2019-08-13']
+plot_df_3 = master_df.resample('D').max()
 
 data = [
     go.Scatter(x=plot_df_1.index, y=plot_df_1['count'],
@@ -43,8 +40,6 @@ data = [
 ]
 
 fig1 = go.Figure(data)
-
-# plot_df = master_df.resample('D').max()
 
 data = [
     go.Bar(x=plot_df_2.index, y=plot_df_2['count'],
@@ -58,5 +53,19 @@ fig2.update_layout(
     title='Count by hour of the day'
 )
 
+
+
+data = [
+    go.Bar(x=plot_df_3.index, y=plot_df_3.diff()['count'],
+        marker_line_width=0
+        # mode='markers'
+    )
+]
+
+fig3 = go.Figure(data=data)
+fig3.update_layout(
+    title='Count by days'
+)
 plt.plot(fig1, filename='total_count.html')
 plt.plot(fig2, filename='count_by_hour_of_the_day.html')
+plt.plot(fig3, filename='count_by_days.html')
