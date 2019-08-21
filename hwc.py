@@ -23,7 +23,7 @@ GPIO.add_event_callback(pin, my_callback)
 
 def write_to_csv(time_now, turns_now):
     line = [time_now.strftime("%Y-%m-%d %H:%M:%S"), str(turns_now)]
-    filename = "hamster_" + time_now.strftime("%Y%m%d") + ".csv"
+    filename = "data/hamster_" + time_now.strftime("%Y%m%d") + ".csv"
     with open(filename, mode='a') as csv_file:
         writer = csv.writer(csv_file)
         writer.writerow(line)

@@ -7,7 +7,7 @@ import plotly.offline as plt
 
 master_df = pd.DataFrame()
 
-for file in glob.glob("*.csv"):
+for file in glob.glob("data/*.csv"):
     print(file)
 
     df = pd.read_csv(file, header=None)
